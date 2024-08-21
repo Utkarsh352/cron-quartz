@@ -1,18 +1,18 @@
-# JOB=>
+# JOB
 type Job interface {
 	Execute(context.Context) error
 	Description() string
 }
 
-# CronJobs=>
+# CronJobs
 func NewCronTrigger(expression string) (*CronTrigger, error)
 [resource](https://crontab.cronhub.io/)
 <second> <minute> <hour> <day-of-month> <month> <day-of-week> <year>
 
-# JobKey=>
+# JobKey
 func NewJobKey(name string) *JobKey
 
-# Scheduler=>
+# Scheduler
 type Scheduler interface {
 	Start(context.Context)
 	IsStarted() bool
@@ -32,33 +32,33 @@ type Scheduler interface {
 	Stop()
 }
 
-# ScheduledJob=>
+# ScheduledJob
 type ScheduledJob interface {
 	JobDetail() *JobDetail
 	Trigger() Trigger
 	NextRunTime() int64
 }
 
-# NewStdScheduler=>
+# NewStdScheduler
 func NewStdScheduler() Scheduler
 func (sched *StdScheduler) DeleteJob(jobKey *JobKey) error
 
-# ScheduleJob=>
+# ScheduleJob
 func (sched *StdScheduler) ScheduleJob(
 	jobDetail *JobDetail,
 	trigger Trigger,
 ) error
 
-# Trigger=>
+# Trigger
 type Trigger interface {
 	NextFireTime(prev int64) (int64, error)
 	Description() string
 }
 
-# SimpleTrigger=> 
+# SimpleTrigger
 type SimpleTrigger struct {
 	Interval time.Duration
 }
 
-# Crontrigger=>
+# Crontrigger
 has a cron expression inside it
