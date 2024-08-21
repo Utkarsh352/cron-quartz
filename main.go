@@ -48,9 +48,7 @@ func main() {
 	ctx := context.Background()
 	scheduler.Start(ctx)
 
-	// Keep the program running for demonstration
+	// Keep the program running to see
 	time.Sleep(30 * time.Second)
-
-	// Stop the scheduler gracefully
 	scheduler.Stop()
 }
