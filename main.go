@@ -67,6 +67,7 @@ func main() {
 	RetryScheduler(scheduler, 3, jobDetail, cronTrigger, &failedJobs)
 
 	// Channel to listen for interrupt that'll be blocked until ctrl+c is recieved
+	// buffered channel with size 1 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 	sig := <-sigChan
