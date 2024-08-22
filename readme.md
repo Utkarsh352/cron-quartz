@@ -62,3 +62,6 @@ type SimpleTrigger struct {
 
 # Crontrigger
 has a cron expression inside it
+
+# Retry Scheduler
+func RetryScheduler(scheduler quartz.Scheduler, maxRetries int, jobDetail *quartz.JobDetail, trigger quartz.Trigger) 
